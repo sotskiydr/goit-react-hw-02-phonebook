@@ -1,17 +1,17 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import ContactForm from './components/ContactForm/ContactForm';
-import Filter from './components/Filter';
-import ContactsList from './components/ContactsList';
+import Filter from './components/Filter/Filter';
+import ContactsList from './components/ContactList/ContactsList';
 import './App.css';
 
 class App extends React.Component {
   state = {
     contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      { id: 'id-1', name: 'Vova Putin', number: '459-12-56' },
+      { id: 'id-2', name: 'Vitya Poroshenko', number: '443-89-12' },
+      { id: 'id-3', name: 'Vova Lenin', number: '645-17-79' },
+      { id: 'id-4', name: 'Joseph Stalin', number: '227-91-26' },
     ],
     filter: '',
     name: '',
