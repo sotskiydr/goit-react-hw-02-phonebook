@@ -1,27 +1,30 @@
-import React from "react";
+import React from 'react';
+// import styles from './ContactForm.module.scss'
 
-class Form extends React.Component {
+class ContactForm extends React.Component {
   state = {
-    name: "",
-    number: "",
+    name: '',
+    number: '',
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
+
     this.props.onSubmit({
       name: this.state.name,
       number: this.state.number,
     });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <label>
           Name
           <input
@@ -52,4 +55,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default ContactForm;
