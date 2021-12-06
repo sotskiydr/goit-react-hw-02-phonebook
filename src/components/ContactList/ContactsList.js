@@ -15,7 +15,9 @@ const ContactsList = ({ renderContacts, deleteContact }) => {
               className={styles.btn}
               type="button"
               id={el.id}
-              onClick={deleteContact}
+              onClick={() => {
+                deleteContact(el.id);
+              }}
             >
               Delete
             </button>

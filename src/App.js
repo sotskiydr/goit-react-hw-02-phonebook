@@ -19,18 +19,14 @@ class App extends React.Component {
   };
 
   formSubmitData = ({ name, number }) => {
-    let variable = true;
     const newItem = { id: nanoid(), name: name, number: number };
-    this.state.contacts.forEach(el => {
-      if (el.name === name) {
-        alert(`${name} is already in contacts`);
-        variable = false;
-      }
-    });
-    if (variable === true) {
+    let isUnique = this.state.contacts.some(el => el.name === name);
+    if (!isUnique) {
       this.setState(prevStates => ({
         contacts: [...prevStates.contacts, newItem],
       }));
+    } else {
+      alert(`${name} is already in contacts`);
     }
   };
 
@@ -40,30 +36,15 @@ class App extends React.Component {
 
   renderContacts = () => {
     const { filter, contacts } = this.state;
-    let arrayContacts = contacts;
     const toLowerCaseFilter = filter.toLowerCase();
-    const renderFilter = contacts.filter(el =>
+    return contacts.filter(el =>
       el.name.toLowerCase().includes(toLowerCaseFilter),
     );
-    if (filter.length > 0) {
-      arrayContacts = renderFilter;
-    }
-    return arrayContacts;
   };
 
-  deleteContact = e => {
-    const currentId = e.target.id;
-    // const contacts = this.state.contacts;
-    // contacts.forEach((el, index) => {
-    //     if(el.id === currentId){
-    //         return contacts.splice(index,1)
-    //     }
-    // })
-    // this.setState({
-    //     contacts: contacts
-    // })
+  deleteContact = id => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(el => el.id !== currentId),
+      contacts: prevState.contacts.filter(el => el.id !== id),
     }));
   };
 
